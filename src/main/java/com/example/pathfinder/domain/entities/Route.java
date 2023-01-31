@@ -37,7 +37,8 @@ public class Route extends BaseEntity {
 
     @OneToMany(targetEntity = Picture.class,
             mappedBy = "route",
-            cascade = {CascadeType.MERGE, CascadeType.DETACH})
+            cascade = {CascadeType.MERGE, CascadeType.DETACH},
+            fetch = FetchType.EAGER)
     private List<Picture> pictures;
 
     public Route() {
@@ -103,6 +104,24 @@ public class Route extends BaseEntity {
 
     public Route setCategories(List<Category> categories) {
         this.categories = categories;
+        return this;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public Route setComments(List<Comment> comments) {
+        this.comments = comments;
+        return this;
+    }
+
+    public List<Picture> getPictures() {
+        return pictures;
+    }
+
+    public Route setPictures(List<Picture> pictures) {
+        this.pictures = pictures;
         return this;
     }
 }
